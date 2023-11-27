@@ -19,7 +19,7 @@ function Form() {
   return (
     <div className="h-10">
       <input
-        className="w-[40%] h-full shadow text-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className="w-[500px] h-full shadow text-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="messageInput"
         value={message}
         onChange={handleInputChange}
