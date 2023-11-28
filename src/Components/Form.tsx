@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import supabase from "../supabase";
 
 function Form() {
@@ -15,8 +15,15 @@ function Form() {
   const minutesText = minutes < 10 ? "0" + minutes : minutes;
   const secondsText = seconds < 10 ? "0" + seconds : seconds;
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value);
+  };
+
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSubmit(e);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -48,6 +55,7 @@ function Form() {
         id="messageInput"
         value={message}
         onChange={handleInputChange}
+        onKeyDown={handleKeyPress}
       />
       <button
         className="w-[60px] h-full ml-2 text-sm bg-gray-200 hover:bg-gray-400 text-gray-700 rounded-md"

@@ -2,8 +2,14 @@ import { useEffect, useState } from "react";
 import supabase from "../supabase";
 import Message from "./Message";
 
+interface MessageInfo {
+  id: number;
+  text: string;
+  time: string;
+}
+
 function MessageStack() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<MessageInfo[]>([]);
 
   useEffect(() => {
     getMessages();
@@ -25,7 +31,7 @@ function MessageStack() {
 
   async function getMessages() {
     const { data } = await supabase.from("messages").select();
-    setMessages(data.reverse());
+    setMessages(data ? data.sort((a, b) => b.id - a.id) : []);
   }
 
   return (
