@@ -6,14 +6,9 @@ import UserManagement from "./Components/UserManagement";
 
 const App = () => {
   const [username, setUsername] = useState("Anonymous");
-  const [isBlurred, setIsBlurred] = useState(false);
 
   const changeUsername = (newUsername: string) => {
     setUsername(newUsername);
-  };
-
-  const handleBlur = () => {
-    setIsBlurred(!isBlurred);
   };
 
   const handleLogOut = () => {
@@ -25,11 +20,7 @@ const App = () => {
       {username !== "Anonymous" ? (
         <UserManagement username={username} logOut={handleLogOut} />
       ) : (
-        <Login
-          setUsername={changeUsername}
-          setBlur={handleBlur}
-          isBlurred={isBlurred}
-        />
+        <Login setUsername={changeUsername} />
       )}
       <h1 className="text-center text-xl pb-2">Message Board</h1>
       <Form username={username} />

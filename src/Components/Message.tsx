@@ -24,7 +24,7 @@ const Message = (props: Props) => {
   return (
     <div className="border w-[580px] shadow rounded-md p-2 hover:border-gray-400">
       <p className="break-words text-lg text-gray-900">{props.text}</p>
-      <div className="flex">
+      <div className="flex justify-between">
         <p className="text-xs mt-1 text-gray-500">
           {props.user} at {props.time}
         </p>
@@ -32,7 +32,7 @@ const Message = (props: Props) => {
           <div>
             <button
               onClick={handleDelete}
-              className="ml-[335px] text-center text-xs h-[17px] w-[18px] rounded-md bg-red-400 text-white hover:bg-red-600"
+              className="text-center text-xs h-[17px] w-[18px] rounded-md bg-red-400 text-white hover:bg-red-600"
             >
               X
             </button>

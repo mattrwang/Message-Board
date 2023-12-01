@@ -67,7 +67,7 @@ const SignUpScreen = (props: Props) => {
   };
 
   return (
-    <div className="absolute mt-[30px] rounded-md h-[400px] w-[400px] bg-gray-200 z-1">
+    <div className="shadow-2xl absolute mt-[30px] rounded-md h-[400px] w-[400px] bg-gray-200 z-1">
       <form onKeyDown={handleKeyPress} className="flex flex-col items-center">
         <label className="mt-[15px] text-xl">Sign up for Message Board!</label>
         <div className="max-h-1">

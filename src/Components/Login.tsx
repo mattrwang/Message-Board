@@ -4,8 +4,6 @@ import LoginScreen from "./LoginScreen";
 
 interface Props {
   setUsername: (username: string) => void;
-  setBlur: (isBlurred: boolean) => void;
-  isBlurred: boolean;
 }
 
 const Login = (props: Props) => {
@@ -14,12 +12,10 @@ const Login = (props: Props) => {
 
   const toggleSignUp = () => {
     setVisibleSignUp(!visibleSignUp);
-    props.setBlur(!props.isBlurred);
   };
 
   const toggleLogin = () => {
     setVisibleLogin(!visibleLogin);
-    props.setBlur(!props.isBlurred);
   };
 
   const setUsername = (username: string) => {
