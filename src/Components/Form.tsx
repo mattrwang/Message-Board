@@ -1,7 +1,11 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import supabase from "../supabase";
 
-const Form = () => {
+interface Props {
+  username: string;
+}
+
+const Form = (props: Props) => {
   const [message, setMessage] = useState("");
   const [disabled, setDisabled] = useState(true);
   const [tooLong, setTooLong] = useState(false);
@@ -47,6 +51,7 @@ const Form = () => {
       time: `${hoursConverted}:${minutesText}:${secondsText} ${ampm} on ${month}/${day}/${
         year % 2000
       } `,
+      user: props.username,
     });
 
     if (error) {

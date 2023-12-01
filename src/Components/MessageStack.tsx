@@ -9,7 +9,11 @@ interface MessageInfo {
   user: string;
 }
 
-const MessageStack = () => {
+interface Props {
+  username: string;
+}
+
+const MessageStack = (props: Props) => {
   const [messages, setMessages] = useState<MessageInfo[]>([]);
 
   useEffect(() => {
@@ -40,9 +44,11 @@ const MessageStack = () => {
       {messages.map((message) => (
         <li className="mb-3" key={message.text}>
           <Message
+            id={message.id}
             time={message.time}
             text={message.text}
             user={message.user}
+            username={props.username}
           />
         </li>
       ))}

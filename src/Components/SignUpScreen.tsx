@@ -77,7 +77,7 @@ const SignUpScreen = (props: Props) => {
             id="username"
             onChange={handleUsernameChange}
             className="mt-[20px] w-[200px] h-[40px] shadow text-sm appearance-none focus:border-blue-400 focus:border-2 border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          ></input>
+          />
           <ul className="ml-[5px] text-xs mt-1">
             <li>- At most 16 characters long</li>
             <li>- Only alphabetical letters</li>
@@ -91,7 +91,7 @@ const SignUpScreen = (props: Props) => {
             id="password"
             type="password"
             className="mt-[40px] w-[200px] h-[40px] shadow text-sm appearance-none focus:border-blue-400 focus:border-2 border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          ></input>
+          />
           <ul className="ml-[5px] text-xs mt-1">
             <ul>- At least 8 characters</ul>
             <ul>- At least one special character</ul>
