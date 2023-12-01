@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import supabase from "../supabase";
+import { profanity } from "@2toad/profanity";
 
 interface Props {
   username: string;
@@ -47,7 +48,7 @@ const Form = (props: Props) => {
     e.preventDefault();
 
     const { error } = await supabase.from("messages").insert({
-      text: message,
+      text: profanity.censor(message),
       time: `${hoursConverted}:${minutesText}:${secondsText} ${ampm} on ${month}/${day}/${
         year % 2000
       } `,
