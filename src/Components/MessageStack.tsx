@@ -6,9 +6,10 @@ interface MessageInfo {
   id: number;
   text: string;
   time: string;
+  user: string;
 }
 
-function MessageStack() {
+const MessageStack = () => {
   const [messages, setMessages] = useState<MessageInfo[]>([]);
 
   useEffect(() => {
@@ -29,20 +30,24 @@ function MessageStack() {
       .subscribe();
   }, []);
 
-  async function getMessages() {
+  const getMessages = async () => {
     const { data } = await supabase.from("messages").select();
     setMessages(data ? data.sort((a, b) => b.id - a.id) : []);
-  }
+  };
 
   return (
     <ul className="flex flex-col items-center mt-5">
       {messages.map((message) => (
         <li className="mb-3" key={message.text}>
-          <Message time={message.time} text={message.text} />
+          <Message
+            time={message.time}
+            text={message.text}
+            user={message.user}
+          />
         </li>
       ))}
     </ul>
   );
-}
+};
 
 export default MessageStack;
