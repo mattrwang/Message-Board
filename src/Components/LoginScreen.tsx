@@ -1,5 +1,6 @@
 import React, { useState, KeyboardEvent, useEffect } from "react";
 import supabase from "../supabase";
+import { compareSync } from "bcrypt-ts";
 
 interface Props {
   toggle: () => void;
@@ -28,7 +29,7 @@ const LoginScreen = (props: Props) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (checkUserExists(username) !== -1) {
-      if (users[checkUserExists(username)].password === password) {
+      if (compareSync(password, users[checkUserExists(username)].password)) {
         props.toggle();
         props.setUsername(username);
       } else {

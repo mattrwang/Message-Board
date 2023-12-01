@@ -1,5 +1,6 @@
 import React, { useState, KeyboardEvent } from "react";
 import supabase from "../supabase";
+import { genSaltSync, hashSync } from "bcrypt-ts";
 
 interface Props {
   toggle: () => void;
@@ -16,9 +17,12 @@ const SignUpScreen = (props: Props) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const salt = genSaltSync(10);
+    const hash = hashSync(password, salt);
+
     const { error } = await supabase.from("users").insert({
       username: username,
-      password: password,
+      password: hash,
     });
     if (error) {
       console.error("Error inserting data:", error.message);
